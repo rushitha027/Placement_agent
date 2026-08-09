@@ -11,13 +11,17 @@ langserve[all]==0.1.0
 fastapi==0.111.0
 uvicorn[standard]==0.30.1
 
-# Pydantic v2 (compatible with langchain 0.1.x)
+# Pydantic — pre-built wheel available for Python 3.11
 pydantic==2.6.4
+pydantic-core==2.16.3
 
 # Utilities
 python-dotenv==1.0.1
 tiktoken==0.7.0
 openai==1.30.1
+
+# numpy — pre-built wheel for Python 3.11
+numpy==1.26.4
 
 # Optional: for PDF resume parsing
 pypdf==4.2.0
