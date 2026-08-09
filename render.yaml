@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: ai-career-agent
+    runtime: python
+    region: oregon           # change to your preferred Render region
+    plan: free               # upgrade to 'starter' for always-on
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false          # set manually in Render dashboard — never commit this value
+
+      - key: OPENAI_MODEL
+        value: gpt-3.5-turbo
+
+      - key: AGENT_TEMPERATURE
+        value: "0.3"
+
+      - key: ALLOWED_ORIGINS
+        value: "*"           # restrict to your frontend domain in production
+
+      - key: PYTHON_VERSION
+        value: "3.11.0"
